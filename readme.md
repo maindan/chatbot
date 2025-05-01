@@ -16,7 +16,7 @@ Antes de executar a aplicação, certifique-se de ter os seguintes softwares ins
 1.  **Clone o repositório:**
 
     ```bash
-    git clone git@github.com:maindan/desafio-fpf.git
+    git clone git@github.com:maindan/chatbot.git
     ```
 
 2.  **Construa e execute os containers Docker:**
