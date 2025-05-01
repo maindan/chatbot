@@ -19,13 +19,13 @@ Antes de executar a aplicação, certifique-se de ter os seguintes softwares ins
     git clone git@github.com:maindan/chatbot.git
     ```
 
-2.  **Construa e execute os containers Docker:**
+2.  **Construa e execute o container Docker:**
 
     Abra o terminal na pasta principal do projeto e rode o comando:
     ```bash
     docker-compose up --build
     ```
-    Aguarde até que a aplicação esteja operante, leva alguns minutos até que a aplicação conclua a inicialização
+    Aguarde até que a aplicação esteja operante, leva alguns instantes até que a aplicação conclua a inicialização
 
 3.  **Acesse a aplicação:**
 
