@@ -12,18 +12,22 @@ def webhook():
     print(f'EVENTO RECEBIDO {data}')
     waha = Waha()
 
-    chat_id = data['payload']['from']
+    event = data.get('event', {})
 
-    waha.start_typing(chat_id)
-    
-    time.sleep(random.radint(3, 6))
+    if event and event != 'session.status':
 
-    # waha.send_message(
-    #     chat_id=chat_id,
-    #     message='Resposta automatica'
-    # )
+        chat_id = data['payload']['from']
 
-    waha.stop_typing()
+        waha.start_typing(chat_id)
+        
+        time.sleep(3)
+
+        waha.send_message(
+            chat_id='',
+            message='Resposta automatica'
+        )
+
+        waha.stop_typing(chat_id)
 
 
 
