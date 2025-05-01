@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+import time
+import random
 
 app = Flask(__name__)
 
@@ -12,10 +14,17 @@ def webhook():
 
     chat_id = data['payload']['from']
 
-    waha.send_message(
-        chat_id=chat_id,
-        message='Resposta automatica'
-    )
+    waha.start_typing(chat_id)
+    
+    time.sleep(random.radint(3, 6))
+
+    # waha.send_message(
+    #     chat_id=chat_id,
+    #     message='Resposta automatica'
+    # )
+
+    waha.stop_typing()
+
 
 
     return jsonify({'status': 'success'}), 200
