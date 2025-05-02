@@ -43,7 +43,6 @@ Antes de executar a aplicação, certifique-se de ter os seguintes softwares ins
     ``` 
     e todas as mensagem serão encaminhadas para a api.
 
-    Esta apenas mostr
 ## Variáveis de Ambiente
 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
