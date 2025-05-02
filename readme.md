@@ -23,7 +23,7 @@ Antes de executar a aplicação, certifique-se de ter os seguintes softwares ins
 
     Abra o terminal na pasta principal do projeto e rode o comando:
     ```bash
-    docker-compose up --build
+    docker compose up --build
     ```
     Aguarde até que a aplicação esteja operante, leva alguns instantes até que a aplicação conclua a inicialização
 
