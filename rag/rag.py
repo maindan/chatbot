@@ -10,7 +10,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 os.environ['HUGGINGFACE_API_KEY'] = config('HUGGINGFACE_API_KEY')
 
 if __name__ == '__main__':
-    file_path = '/app/rag/data/pdf_test.pdf'
+    file_path = '/app/rag/data/pdf_teste.pdf'
     loader = PyPDFLoader(file_path)
     docs = loader.load()
 
