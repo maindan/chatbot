@@ -21,22 +21,25 @@ def webhook():
     is_status = 'status@broadcast' in chat_id
     is_event = 'session.status' in event
 
+    is_ai_content = 'chatbot_ai' in received_message
+
     if is_group or is_status or is_event:
         return jsonify({'status': 'success', 'message':'Mensagem de grupo/status ignorada'}), 200
     
-    waha = Waha()
-    ai_bot = AiBot()
+    if is_ai_content:
+        waha = Waha()
+        ai_bot = AiBot()
 
-    waha.start_typing(chat_id)
-    time.sleep(3)
+        waha.start_typing(chat_id)
+        time.sleep(3)
 
-    response = ai_bot.invoke(question=received_message)
-    waha.send_message(
-        chat_id=chat_id,
-        message=response
-    )
+        response = ai_bot.invoke(question=received_message)
+        waha.send_message(
+            chat_id=chat_id,
+            message=response
+        )
 
-    waha.stop_typing(chat_id)
+        waha.stop_typing(chat_id)
 
 
 
