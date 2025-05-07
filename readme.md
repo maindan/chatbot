@@ -3,6 +3,8 @@
 
 Chatbot simples para whatsapp utilizando Waha Whatsapp API, Flask e Groq.
 
+#update: Foi adicionado uma camada de contexto na aplicação onde utilizo o Huggingface para a geração de um banco de dados vetorial para a criação de um RAG que é utilizado pelo Groq para personalizar as repostas com base no contexto e histórico de conversa.
+
 ## Pré-requisitos
 
 Antes de executar a aplicação, certifique-se de ter os seguintes softwares instalados:
@@ -10,6 +12,7 @@ Antes de executar a aplicação, certifique-se de ter os seguintes softwares ins
 * [Docker](https://www.docker.com/get-started/)
 * [Docker Compose](https://docs.docker.com/compose/install/)
 * [Groq Api Key](https://console.groq.com)
+* [HuggingFace Api Key](https://huggingface.co/)
 
 ## Configuração
 
@@ -43,17 +46,37 @@ Antes de executar a aplicação, certifique-se de ter os seguintes softwares ins
     ``` 
     e todas as mensagem serão encaminhadas para a api.
 
+4.  **Geração de RAG**
+
+    Para criação do RAG você precisará adicionar um arquivo em /app/rag/data e realizar alterações no arquivo rag.py em /app/rag para setar o caminho do arquivo, o tipo do arquivo aqui utilizado foi PDF mas com uma breve análise do rag.py você pode alterar o tipo e caminho do arquivo.
+
+    Para criação do RAG acesse o container docker da api através do comando:
+
+    ```bash
+    docker exec -it nome_do_container /bin/bash
+    ```
+
+    Após acessar o container rode o comando 
+    ```bash
+    python /app/rag/rag.py
+    ``` 
+    e aguarde até que o script finalize, após isso a aplicação estará configurada para responder com contexto.
+
+    Observação: a aplicação está configurada para apenas responder a usuários que utilizem "@chat" nas perguntas.
+
 ## Variáveis de Ambiente
 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
 
 `GROQ_API_KEY`
+`HUGGINGFACE_API_KEY`
 
 
 ## Stack utilizada
 **Whatsapp:** Waha: https://waha.devlike.pro/ \
 **Back-end:** Flask, Langchain e Requests para services \
 **Virtualização:** Docker, Docker Compose \
+**RAG context:** HuggingFace, Chroma DB, Pypdf \
 **LLM:** GroqCloud: https://console.groq.com/home
 
 ## Melhorias
